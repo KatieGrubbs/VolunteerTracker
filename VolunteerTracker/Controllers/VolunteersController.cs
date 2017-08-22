@@ -15,6 +15,7 @@ using VolunteerTracker.Models.Volunteer;
 
 namespace VolunteerTracker.Controllers
 {
+    [Authorize]
     public class VolunteersController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
