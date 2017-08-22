@@ -1,0 +1,43 @@
+﻿@model IEnumerable<VolunteerTracker.Models.Opportunity.Opportunity>
+
+@{
+    ViewBag.Title = "View Opportunities";
+}
+
+<h2>Opportunities Available for @ViewBag.volunteerName</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.OpportunityName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EventDay)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EventCenter)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.OpportunityName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EventDay)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EventCenter)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.OpportunityId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.OpportunityId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.OpportunityId })
+            </td>
+        </tr>
+    }
+
+</table>

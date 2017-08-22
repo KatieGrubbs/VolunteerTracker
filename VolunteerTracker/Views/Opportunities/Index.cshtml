@@ -1,0 +1,65 @@
+﻿@model IEnumerable<VolunteerTracker.Models.Opportunity.Opportunity>
+
+@{
+    ViewBag.Title = "Manage Opportunities";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("New Opportunity", "Create")
+</p>
+<form action="@Url.Action("Index", "Opportunities")" method="post">
+    <input type="text" name="searchString" />
+    <input type="submit" value="Search" />
+</form>
+<form method="post" Action="@Url.Action("Index", "Opportunities")">
+    <select data-val="true" data-val-required="The filter field is required." id="opportunity-filter" name="filter">
+        <option value="By Center Ascending">By Center Ascending</option>
+        <option value="By Center Descending">By Center Descending</option>
+        <option value="Most Recent">Most Recent</option>
+    </select>
+    <input type="submit" value="Filter" />
+</form>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.OpportunityName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OpportunityDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EventDay)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EventCenter)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.OpportunityName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OpportunityDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EventDay)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EventCenter)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.OpportunityId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.OpportunityId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.OpportunityId }) |
+                @Html.ActionLink("Opportunity Matches", "VolunteerMatches", new { id = item.OpportunityId })
+            </td>
+        </tr>
+    }
+
+</table>

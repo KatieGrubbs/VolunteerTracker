@@ -1,0 +1,49 @@
+﻿@model VolunteerTracker.Models.Opportunity.Opportunity
+
+@{
+    ViewBag.Title = "Opportunity Details";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.OpportunityName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OpportunityName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OpportunityDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OpportunityDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EventDay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EventDay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EventCenter)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EventCenter)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.OpportunityId }) |
+    @Html.ActionLink("Cancel", "Index")
+</p>

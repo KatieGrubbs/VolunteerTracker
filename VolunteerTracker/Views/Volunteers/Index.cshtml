@@ -1,0 +1,68 @@
+﻿@model IEnumerable<VolunteerTracker.Models.Volunteer.Volunteer>
+
+@{
+    ViewBag.Title = "Manage Volunteers";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("New Volunteer", "Create")
+</p>
+<form action="@Url.Action("Index", "Volunteers")" method="post">
+    <input type="text" name="searchString" />
+    <input type="submit" Value="Search" />
+</form>
+<form action="@Url.Action("Index", "Volunteers")" method="post">
+    <select data-val="true" data-val-required="The filter field is required." id="volunteer-filter" name="filter">
+        <option value="All">All</option>
+        <option value="Approved">Approved</option>
+        <option value="Pending">Pending</option>
+        <option value="Approved/Pending">Approved/Pending</option>
+        <option value="Disapproved">Disapproved</option>
+        <option value="Inactive">Inactive</option>
+    </select>
+    <input type="submit" value="Filter" />
+</form>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AvailableDay)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AvailableDay)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.VolunteerId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.VolunteerId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.VolunteerId }) |
+                @Html.ActionLink("View Opportunities", "ViewOpportunities", new { id = item.VolunteerId })
+            </td>
+        </tr>
+    }
+
+</table>
