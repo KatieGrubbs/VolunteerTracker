@@ -54,7 +54,7 @@ namespace VolunteerTracker.Controllers
                 case "Most Recent":
                     DateTime dateMax = DateTime.Now.AddDays(60);
                     // Filter by opportunities in the last 60 days
-                    opportunities = opportunities.Where(o => o.OpportunityDate > dateMax);
+                    opportunities = opportunities.Where(o => o.OpportunityDate < dateMax);
                     // Sort by most recent
                     opportunities = opportunities.OrderByDescending(o => o.OpportunityDate);
                     break;
